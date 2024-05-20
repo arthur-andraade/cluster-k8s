@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-golang-qaa
+spec:
+  selector:
+    matchLabels:
+      app: server-golang-qaa
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: server-golang-qaa
+    spec:
+      containers:
+      - name: server-golang-qaa
+        image: arthurandraadee/server-golang:1.0.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+        env:
+          - name: ENVIRONMENT_TYPE
+            value: QAA
