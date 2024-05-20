@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-server-golang
+spec:
+  replicas: 7
+  selector:
+    matchLabels:
+      app: server-golang
+  template:
+    metadata:
+      labels:
+        app: server-golang
+    spec:
+      containers:
+        - name: server-golang-container
+          image: arthurandraadee/server-golang:latest
