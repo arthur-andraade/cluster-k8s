@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: server-golang-qaa
-        image: arthurandraadee/server-golang:1.0.0
+        image: arthurandraadee/server-golang:1.0.1
         resources:
           limits:
             memory: "128Mi"
@@ -24,3 +24,7 @@ spec:
         env:
           - name: ENVIRONMENT_TYPE
             value: QAA
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
