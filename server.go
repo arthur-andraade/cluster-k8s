@@ -1,12 +1,21 @@
 package main
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+	"os"
+)
 
 func main() {
 	http.HandleFunc("/", hello)
-	http.ListenAndServe(":80", nil)
+	http.ListenAndServe(":8080", nil)
 }
 
 func hello(response http.ResponseWriter, request *http.Request) {
-	response.Write([]byte("<h1>Hello cluster k8s</h1>"))
+
+	environmentType := os.Getenv("ENVIRONMENT_TYPE")
+
+	responseString := fmt.Sprintf("<h1>Cluster k8s - AMBIENTE %s </h1>", environmentType)
+
+	response.Write([]byte(responseString))
 }
