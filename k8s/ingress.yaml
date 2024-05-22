@@ -2,33 +2,35 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: server-golang-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
   - http:
       paths:
       - pathType: Prefix
-        path: "/dev"
+        path: /dev(/|$)(.*)
         backend:
           service:
             name: server-golang-dev
             port:
               number: 80
       - pathType: Prefix
-        path: "/qaa"
+        path: /qaa(/|$)(.*)
         backend:
           service:
             name: server-golang-qaa
             port:
               number: 80
       - pathType: Prefix
-        path: "/hml"
+        path: /hml(/|$)(.*)
         backend:
           service:
             name: server-golang-hml
             port:
               number: 80
       - pathType: Prefix
-        path: "/prd"
+        path: /prd(/|$)(.*)
         backend:
           service:
             name: server-golang-prd
