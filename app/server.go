@@ -7,17 +7,18 @@ import (
 	"time"
 )
 
-const SECONDS_START = 25
+const SECONDS_TO_SIMULATE_ERRO = 25
+const SECONDS_TO_START = 10
 
 var startedAt = time.Now()
 
 func main() {
 	http.HandleFunc("/health", health)
-	http.HandleFunc("/", hello)
+	http.HandleFunc("/info", info)
 	http.ListenAndServe(":8080", nil)
 }
 
-func hello(response http.ResponseWriter, request *http.Request) {
+func info(response http.ResponseWriter, request *http.Request) {
 
 	environmentType := os.Getenv("ENVIRONMENT_TYPE")
 
@@ -32,7 +33,9 @@ func health(response http.ResponseWriter, request *http.Request) {
 
 	duration := time.Since(startedAt)
 
-	if duration < SECONDS_START {
+	if duration < SECONDS_TO_START {
+		response.WriteHeader(503)
+	} else if duration > SECONDS_TO_SIMULATE_ERRO {
 		response.WriteHeader(500)
 	} else {
 		response.WriteHeader(200)
