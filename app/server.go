@@ -20,7 +20,7 @@ func main() {
 
 func info(response http.ResponseWriter, request *http.Request) {
 
-	environmentType := os.Getenv("ENVIRONMENT_TYPE")
+	environmentType := os.Getenv("ACTIVE_ENVIRONMENT")
 
 	podName := os.Getenv("POD_NAME")
 

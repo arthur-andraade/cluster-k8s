@@ -14,16 +14,17 @@ spec:
     spec:
       containers:
       - name: server-golang-qaa
-        image: arthurandraadee/server-golang:1.0.3
+        image: arthurandraadee/server-golang:1.0.5
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
         - containerPort: 8080
+        envFrom:
+          - configMapRef:
+              name: server-golang-qaa
         env:
-          - name: ENVIRONMENT_TYPE
-            value: QAA
           - name: POD_NAME
             valueFrom:
               fieldRef:
