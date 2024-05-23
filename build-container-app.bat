@@ -30,7 +30,7 @@ if errorlevel 1 (
 
 REM Executa o comando docker run
 echo Executando: docker run -d -p 80:8080 --name server-golang-testing arthurandraadee/server-golang:%tag%
-docker run -d -p 80:8080 --name server-golang-testing arthurandraadee/server-golang:%tag%
+docker run -d -p 8083:8080 --name server-golang-testing arthurandraadee/server-golang:%tag%
 
 REM Verifica se o run foi bem sucedido
 if errorlevel 1 (

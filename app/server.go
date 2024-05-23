@@ -35,8 +35,6 @@ func health(response http.ResponseWriter, request *http.Request) {
 
 	if duration < SECONDS_TO_START {
 		response.WriteHeader(503)
-	} else if duration > SECONDS_TO_SIMULATE_ERRO {
-		response.WriteHeader(500)
 	} else {
 		response.WriteHeader(200)
 	}

@@ -14,11 +14,14 @@ spec:
     spec:
       containers:
       - name: server-golang-prd
-        image: arthurandraadee/server-golang:1.0.5
+        image: arthurandraadee/server-golang:1.0.7
         resources:
+          requests:
+            cpu: 20m
+            memory: 40Mi
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            cpu: 30m
+            memory: 50Mi
         ports:
         - containerPort: 8080
         envFrom:

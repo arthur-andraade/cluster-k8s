@@ -14,11 +14,14 @@ spec:
     spec:
       containers:
       - name: server-golang-qaa
-        image: arthurandraadee/server-golang:1.0.5
+        image: arthurandraadee/server-golang:1.0.7
         resources:
+          requests:
+            cpu: 10m
+            memory: 30Mi
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            cpu: 15m
+            memory: 35Mi
         ports:
         - containerPort: 8080
         envFrom:
